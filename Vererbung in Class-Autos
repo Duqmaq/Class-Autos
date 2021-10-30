@@ -1,0 +1,53 @@
+
+class Fahrzeug():
+    "Klasse für das Erstellen von Personenkraftwagen"
+    def __init__(self, farbe, baujahr, kmstand, sitze, marke):
+        self.farbe = farbe
+        self.baujahr = baujahr
+        self.kmstand = kmstand
+        self.sitze = sitze
+        self.marke = marke
+        self.strecke = kmstand   
+
+    def tut_hupen(self, anzahl=1):
+        print(anzahl * "tout-tout ")
+
+    def tut_fahren(self, kmstand):
+        print("Das Fahrzeug hat bis jetzt", self.strecke, "km zurückgelegt")
+        self.strecke += kmstand
+        print("Das Fahrzeug ist neuerdings", kmstand, "km gefahren")
+        print("der jetzig erreichte KM_Stand beträgt:  ", self.strecke, ".")
+
+    def tut_parken(self, parken="zwischen zwei Autos"):
+        print("Das Fahrzeug kann außerdem schön", parken, "selbstständig parken")
+
+class Pkw(Fahrzeug):
+    def __init__(self, farbe, baujahr, kmstand, sitze, marke, koffervolumen):
+        super().__init__(farbe, baujahr, kmstand, sitze, marke)
+        self.koffervolumen = koffervolumen  
+
+class Lkw(Fahrzeug):
+    def __init__(self, farbe, baujahr, kmstand, sitze, marke):
+        super().__init__(farbe, baujahr, kmstand, sitze, marke)
+
+    def tut_parken(self, parken ="auf Firmenhof abgestellt"):
+        print("Unser LKW wird", parken)
+
+    def tut_aufladen(self, aufladen = "wird komplett aufgeladen"):
+        print("Unser LKW", aufladen)  
+        
+fahrzeug_pkw = Pkw("rot", 1981, 143000, 4, "Citroen", 6)
+print(fahrzeug_pkw.koffervolumen)
+
+fahrzeug_lkw = Lkw("blau", 2001, 60000, 3, "Mercedes Benz")
+print(fahrzeug_lkw.marke)
+
+fahrzeug_pkw.tut_hupen(2)
+fahrzeug_lkw.tut_hupen(3)
+fahrzeug_pkw.tut_fahren(5000)
+fahrzeug_pkw.tut_fahren(15000)
+fahrzeug_lkw.tut_fahren(12345)
+fahrzeug_lkw.tut_fahren(7000)
+fahrzeug_pkw.tut_parken()
+fahrzeug_lkw.tut_parken()
+fahrzeug_lkw.tut_aufladen()
